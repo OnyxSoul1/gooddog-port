@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Good Dog - OnyxSoul1 Port</title>
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background-color: #000; overflow: hidden; }
+        canvas { width: 100vw; height: 100vh; display: block; image-rendering: pixelated; }
+    </style>
+</head>
+<body>
+
+    <!-- This is the screen canvas where the game will draw the graphics -->
+    <canvas id="canvas" oncontextmenu="event.preventDefault()"></canvas>
+
+    <script>
+        // BYPASS OPERA REGISTRATION ENGINE LOCKS
+        window.GX = {
+            Games: {
+                init: function() { return Promise.resolve(); },
+                getChallengeScore: function() { return 0; },
+                submitScore: function() { return Promise.resolve(); }
+            }
+        };
+
+        // SETUP EMBEDDED ENGINE SYSTEM PATHS
+        var Module = {
+            canvas: document.getElementById('canvas'),
+            arguments: ["--game", "https://jsdelivr.net"],
+            print: console.log,
+            printErr: console.error
+        };
+    </script>
+
+    <!-- INJECT MASTER ENGINE RUNNER FROM YOUR JSDELIVR CDN HUB -->
+    <script src="https://jsdelivr.net"></script>
+
+</body>
+</html>
